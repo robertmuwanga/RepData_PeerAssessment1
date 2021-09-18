@@ -169,17 +169,14 @@ activity <- read_csv(data_name) # read_csv can read and load zipped contents.
 </tbody>
 </table>
 
-From the analysis, we can see that the *steps* variable has ``13.11``% as *NA's*. We can also see that its heavily skewed to the right, indicating that the use of the average value may not be the best use of measure for the NA values. 
-
-To keep it simple for this exercise, we shall replace the NA's with the **Median**.
-
-
 ```r
-activity$steps <- replace(
-  x = activity$steps, 
-  list = which(is.na(activity$steps), arr.ind = TRUE), 
-  values = median(activity$steps, na.rm = TRUE))
+number_of_NA <- sum(length(is.na(activity$steps)))
 ```
+
+From the analysis, we can see that the *steps* variable has ``13.11``% as *NA's*. By looking at the Mean and Median values, we can also see that its heavily skewed to the right. 
+
+At this stage, we shall keep the NA values as-is indicating that the use of the average value may not be the best use of measure for the NA values. We shall handle the NA values under the *Imputing Missing Values* section.
+
 
 With the pre-processing done, our data for analysis looks as follows:
 
@@ -202,1442 +199,1442 @@ activity %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-01 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -10282,1442 +10279,1442 @@ activity %>%
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-10-08 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -44842,1442 +44839,1442 @@ activity %>%
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-01 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -49162,1442 +49159,1442 @@ activity %>%
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-04 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -56362,2882 +56359,2882 @@ activity %>%
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-09 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-10 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -63562,1442 +63559,1442 @@ activity %>%
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-14 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -86602,1442 +86599,1442 @@ activity %>%
    <td style="text-align:right;"> 2355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 45 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 55 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1355 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1400 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1410 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1415 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1420 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1425 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1430 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1435 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1440 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1445 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1450 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1455 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1500 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1505 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1510 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1515 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1520 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1525 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1530 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1535 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1540 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1550 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1555 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1600 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1605 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1610 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1615 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1620 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1625 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1630 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1640 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1645 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1650 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1655 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1700 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1705 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1710 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1715 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1720 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1725 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1730 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1735 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1740 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1745 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1750 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1755 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1800 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1805 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1810 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1815 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1820 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1825 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1830 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1835 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1840 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1845 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1850 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1855 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1900 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1905 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1910 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1915 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1920 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1925 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1930 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1935 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1940 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1945 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1950 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 1955 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2000 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2005 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2010 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2015 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2020 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2025 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2030 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2035 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2040 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2045 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2050 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2055 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2100 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2105 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2110 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2115 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2120 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2125 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2130 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2135 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2140 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2145 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2150 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2155 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2200 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2205 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2210 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2220 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2225 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2230 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2235 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2240 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2245 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2250 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2255 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2300 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2305 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2310 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2315 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2320 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2325 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2330 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2335 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2340 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2345 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2350 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2012-11-30 </td>
    <td style="text-align:right;"> 2355 </td>
   </tr>
@@ -88056,7 +88053,7 @@ Answering this question will take a three-step approach:
 ```r
 total_daily_steps <- activity %>% 
   group_by(date) %>% 
-  summarize(total_steps = sum(steps)) %>% 
+  summarize(total_steps = sum(steps, na.rm = TRUE)) %>% 
   ungroup()
 
 total_daily_steps %>%
@@ -88322,6 +88319,8 @@ total_daily_steps %>%
 
 **2. Make a histogram of the total number of steps taken per day**
 
+Using our total daily steps dataset, we can plot a histogram of the results.
+
 
 ```r
 total_daily_steps %>% 
@@ -88331,7 +88330,7 @@ total_daily_steps %>%
     x = 'Total Steps', 
     y = 'Frequency',
     title = 'Histogram on the total steps per day',
-    caption = 'October and November 2021'
+    caption = 'Period of October and November 2021'
   ) + 
   theme_bw()
 ```
@@ -88343,14 +88342,149 @@ total_daily_steps %>%
 For the period between October and November 2021, the statistics of interest are as below:
 
 * Median number of steps : 0.00 steps
-* Mean number of steps   : 32.48 steps.
+* Mean number of steps   : 37.38 steps.
 
 ## What is the average daily activity pattern?
 
+For this exercise, we shall:
 
+**1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)**
+
+
+```r
+# Summary of step count by 5-minute interval
+time_series_data <- activity %>% 
+  group_by(interval) %>% 
+  summarize(average_steps = mean(steps, na.rm = TRUE)) %>% 
+  ungroup()
+
+# Interval with highest step count
+max_steps_interval <- time_series_data %>%
+  filter(average_steps == max(time_series_data$average_steps, na.rm = TRUE))
+
+# Plotting of data
+time_series_data %>% ggplot(aes(x = interval, y = average_steps)) + 
+  geom_point() + 
+  geom_line(col = 'blue') + 
+  labs(
+    x = 'Interval', 
+    y = 'Average Number of Steps', 
+    title = 'Average number of steps taken by 5-minute interval',
+    caption = 'Period of October and November 2021'
+  ) + 
+  geom_vline(xintercept = max_steps_interval$interval, 
+             col = 'red', 
+             linetype = 'dotted') + 
+  geom_text(
+    aes(
+      x = max_steps_interval$interval, 
+      label=paste("Interval", max_steps_interval$interval, ", av. steps ", round(max_steps_interval$average_steps, 2)),
+                  y=10), 
+    colour="red", angle=0, size=4, hjust = -0.01) + 
+  theme_bw()
+```
+
+![](PA1_template_files/figure-html/time_series-1.png)<!-- -->
+
+**2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?**
+
+From the above graph, its clear to see that the maximum number of average steps was **206.17**, at the interval **835**.
 
 ## Imputing missing values
 
+**1. Calculate and report on the total number of missing values in the dataset.**
 
+In the pre-processing stage, we estimated ``13.11``% of the number of steps constituted *NA's*, and that the distribution was right skewed.
+
+
+```r
+activity %>%
+  summarize(Number_of_NAs = sum(is.na(activity$steps)), 
+            '% as NAs' = Number_of_NAs / nrow(activity) * 100)
+```
+
+```
+## # A tibble: 1 x 2
+##   Number_of_NAs `% as NAs`
+##           <int>      <dbl>
+## 1          2304       13.1
+```
+
+**2. Devise a strategy for filling in the missing values in the dataset.**
+
+To keep it simple for this exercise, we shall replace the NA's with the **Median** number of steps across the dataset.
+
+**3. Create a new dataset that is equal to the original dataset but with the missing data filled in.**
+
+We shall duplicate the original activity dataset and impute the missing values with the strategy mentioned in 2. above, and display a sample of the result below.
+
+
+```r
+new_activity <- activity
+median_steps <- median(activity$steps, na.rm = TRUE)
+
+new_activity$steps <- replace(
+  x = activity$steps, 
+  list = which(is.na(activity$steps), arr.ind = TRUE), 
+  values = median_steps)
+
+head(new_activity)
+```
+
+```
+## # A tibble: 6 x 3
+##   steps date       interval
+##   <dbl> <date>        <dbl>
+## 1     0 2012-10-01        0
+## 2     0 2012-10-01        5
+## 3     0 2012-10-01       10
+## 4     0 2012-10-01       15
+## 5     0 2012-10-01       20
+## 6     0 2012-10-01       25
+```
+
+**4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day.**
+
+
+```r
+new_activity %>% 
+  group_by(date) %>% 
+  summarize(total_steps = sum(steps)) %>% 
+  ggplot(aes(x = total_steps)) + 
+  geom_histogram() + 
+  labs(
+    x = 'Total Steps', 
+    y = 'Frequency',
+    title = 'Histogram on the total steps per day',
+    caption = 'Period of October and November 2021'
+  ) + 
+  theme_bw()
+```
+
+![](PA1_template_files/figure-html/new_activity_histogram-1.png)<!-- -->
+
+Given that we are using the median number of steps (0 steps), there does not seem to be much difference in the nature of the histogram compared to the initial that was drawn with the original data set.
+
+We can also compare the means and median values between the original dataset and this new one.
+
+
+```r
+original <- activity %>% summarize(mean = mean(steps, na.rm = TRUE), 
+                                   median = median(steps, na.rm = TRUE), 
+                                   source = 'original')
+
+new <- new_activity %>% summarize(mean = mean(steps), 
+                                  median = median(steps), 
+                                  source = 'new')
+print(bind_rows(original,new))
+```
+
+```
+## # A tibble: 2 x 3
+##    mean median source  
+##   <dbl>  <dbl> <chr>   
+## 1  37.4      0 original
+## 2  32.5      0 new
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?

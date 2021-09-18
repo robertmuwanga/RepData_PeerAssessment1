@@ -46,19 +46,14 @@ activity <- read_csv(data_name) # read_csv can read and load zipped contents.
 # Analyse the data for anomolies.
 (skim_with(numeric = sfl(hist = NULL)))(activity)
 
-```
-
-From the analysis, we can see that the *steps* variable has ```r format(round(((is.na(activity$steps) %>% sum) / nrow(activity) * 100), 2), nsmall = 2)```% as *NA's*. We can also see that its heavily skewed to the right, indicating that the use of the average value may not be the best use of measure for the NA values. 
-
-To keep it simple for this exercise, we shall replace the NA's with the **Median**.
-
-```{r data_processing_part2}
-activity$steps <- replace(
-  x = activity$steps, 
-  list = which(is.na(activity$steps), arr.ind = TRUE), 
-  values = median(activity$steps, na.rm = TRUE))
+number_of_NA <- sum(length(is.na(activity$steps)))
 
 ```
+
+From the analysis, we can see that the *steps* variable has ```r format(round(((is.na(activity$steps) %>% sum) / nrow(activity) * 100), 2), nsmall = 2)```% as *NA's*. By looking at the Mean and Median values, we can also see that its heavily skewed to the right. 
+
+At this stage, we shall keep the NA values as-is indicating that the use of the average value may not be the best use of measure for the NA values. We shall handle the NA values under the *Imputing Missing Values* section.
+
 
 With the pre-processing done, our data for analysis looks as follows:
 
@@ -84,7 +79,7 @@ Answering this question will take a three-step approach:
 
 total_daily_steps <- activity %>% 
   group_by(date) %>% 
-  summarize(total_steps = sum(steps)) %>% 
+  summarize(total_steps = sum(steps, na.rm = TRUE)) %>% 
   ungroup()
 
 total_daily_steps %>%
@@ -97,6 +92,8 @@ total_daily_steps %>%
 
 **2. Make a histogram of the total number of steps taken per day**
 
+Using our total daily steps dataset, we can plot a histogram of the results.
+
 ```{r histogram_total_steps}
 total_daily_steps %>% 
   ggplot(aes(x = total_steps)) + 
@@ -105,7 +102,7 @@ total_daily_steps %>%
     x = 'Total Steps', 
     y = 'Frequency',
     title = 'Histogram on the total steps per day',
-    caption = 'October and November 2021'
+    caption = 'Period of October and November 2021'
   ) + 
   theme_bw()
 
@@ -115,15 +112,122 @@ total_daily_steps %>%
 
 For the period between October and November 2021, the statistics of interest are as below:
 
-* Median number of steps : `r format(round(median(activity$steps), 2), nsmall = 2)` steps
-* Mean number of steps   : `r format(round(mean(activity$steps), 2), nsmall = 2)` steps.
+* Median number of steps : `r format(round(median(activity$steps, na.rm = TRUE), 2), nsmall = 2)` steps
+* Mean number of steps   : `r format(round(mean(activity$steps, na.rm = TRUE), 2), nsmall = 2)` steps.
 
 ## What is the average daily activity pattern?
 
+For this exercise, we shall:
 
+**1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)**
+
+```{r time_series}
+
+# Summary of step count by 5-minute interval
+time_series_data <- activity %>% 
+  group_by(interval) %>% 
+  summarize(average_steps = mean(steps, na.rm = TRUE)) %>% 
+  ungroup()
+
+# Interval with highest step count
+max_steps_interval <- time_series_data %>%
+  filter(average_steps == max(time_series_data$average_steps, na.rm = TRUE))
+
+# Plotting of data
+time_series_data %>% ggplot(aes(x = interval, y = average_steps)) + 
+  geom_point() + 
+  geom_line(col = 'blue') + 
+  labs(
+    x = 'Interval', 
+    y = 'Average Number of Steps', 
+    title = 'Average number of steps taken by 5-minute interval',
+    caption = 'Period of October and November 2021'
+  ) + 
+  geom_vline(xintercept = max_steps_interval$interval, 
+             col = 'red', 
+             linetype = 'dotted') + 
+  geom_text(
+    aes(
+      x = max_steps_interval$interval, 
+      label=paste("Interval", max_steps_interval$interval, ", av. steps ", round(max_steps_interval$average_steps, 2)),
+                  y=10), 
+    colour="red", angle=0, size=4, hjust = -0.01) + 
+  theme_bw()
+
+```
+
+**2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?**
+
+From the above graph, its clear to see that the maximum number of average steps was **`r round(max_steps_interval$average_steps,2)`**, at the interval **`r max_steps_interval$interval`**.
 
 ## Imputing missing values
 
+**1. Calculate and report on the total number of missing values in the dataset.**
 
+In the pre-processing stage, we estimated ```r format(round(((is.na(activity$steps) %>% sum) / nrow(activity) * 100), 2), nsmall = 2)```% of the number of steps constituted *NA's*, and that the distribution was right skewed.
+
+```{r number_of_NA}
+activity %>%
+  summarize(Number_of_NAs = sum(is.na(activity$steps)), 
+            '% as NAs' = Number_of_NAs / nrow(activity) * 100)
+
+```
+
+**2. Devise a strategy for filling in the missing values in the dataset.**
+
+To keep it simple for this exercise, we shall replace the NA's with the **Median** number of steps across the dataset.
+
+**3. Create a new dataset that is equal to the original dataset but with the missing data filled in.**
+
+We shall duplicate the original activity dataset and impute the missing values with the strategy mentioned in 2. above, and display a sample of the result below.
+
+```{r data_processing_part2}
+new_activity <- activity
+median_steps <- median(activity$steps, na.rm = TRUE)
+
+new_activity$steps <- replace(
+  x = activity$steps, 
+  list = which(is.na(activity$steps), arr.ind = TRUE), 
+  values = median_steps)
+
+head(new_activity)
+
+```
+
+**4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day.**
+
+```{r new_activity_histogram}
+
+new_activity %>% 
+  group_by(date) %>% 
+  summarize(total_steps = sum(steps)) %>% 
+  ggplot(aes(x = total_steps)) + 
+  geom_histogram() + 
+  labs(
+    x = 'Total Steps', 
+    y = 'Frequency',
+    title = 'Histogram on the total steps per day',
+    caption = 'Period of October and November 2021'
+  ) + 
+  theme_bw()
+
+```
+
+Given that we are using the median number of steps (`r median_steps` steps), there does not seem to be much difference in the nature of the histogram compared to the initial that was drawn with the original data set.
+
+We can also compare the means and median values between the original dataset and this new one.
+
+```{r compare_means_medians}
+original <- activity %>% summarize(mean = mean(steps, na.rm = TRUE), 
+                                   median = median(steps, na.rm = TRUE), 
+                                   source = 'original')
+
+new <- new_activity %>% summarize(mean = mean(steps), 
+                                  median = median(steps), 
+                                  source = 'new')
+print(bind_rows(original,new))
+
+```
+Between the original dataset (that had NAs) and the new dataset (with imputed median values), we can see that the median values have no variation. However, there is a slight variation between the mean values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
