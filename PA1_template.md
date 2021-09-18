@@ -24,6 +24,8 @@ Let's install and load these packages into the R Environment:
 pkgs <- c('lubridate', 'readr', 'dplyr', 'ggplot2', 'purrr', 'skimr', 'kableExtra')
 install.packages(pkgs[!(pkgs %in% installed.packages())]) # Install any missing packages
 purrr::walk(pkgs, function(pkg) require(pkg, character.only = TRUE)) # Load packages
+
+theme_set(theme_bw())
 ```
 
 ## Loading and preprocessing the data
@@ -88331,8 +88333,7 @@ total_daily_steps %>%
     y = 'Frequency',
     title = 'Histogram on the total steps per day',
     caption = 'Period of October and November 2021'
-  ) + 
-  theme_bw()
+  )
 ```
 
 ![](PA1_template_files/figure-html/histogram_total_steps-1.png)<!-- -->
@@ -88380,8 +88381,7 @@ time_series_data %>% ggplot(aes(x = interval, y = average_steps)) +
       x = max_steps_interval$interval, 
       label=paste("Interval", max_steps_interval$interval, ", av. steps ", round(max_steps_interval$average_steps, 2)),
                   y=10), 
-    colour="red", angle=0, size=4, hjust = -0.01) + 
-  theme_bw()
+    colour="red", angle=0, size=4, hjust = -0.01)
 ```
 
 ![](PA1_template_files/figure-html/time_series-1.png)<!-- -->
@@ -88457,8 +88457,7 @@ new_activity %>%
     y = 'Frequency',
     title = 'Histogram on the total steps per day',
     caption = 'Period of October and November 2021'
-  ) + 
-  theme_bw()
+  ) 
 ```
 
 ![](PA1_template_files/figure-html/new_activity_histogram-1.png)<!-- -->
@@ -88486,5 +88485,48 @@ print(bind_rows(original,new))
 ## 1  37.4      0 original
 ## 2  32.5      0 new
 ```
+Between the original dataset (that had NAs) and the new dataset (with imputed median values), we can see that the median values have no variation. However, there is a slight variation between the mean values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+**1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.** 
+
+For this, we shall first create a new factor *day_type* indicating whether its a weekday or weekend. This result will be added as a new result to the dataset on which imputation was performed.
+
+
+```r
+new_activity <- new_activity %>% mutate(day_type = factor(case_when(
+    wday(date, week_start = 1) <= 5 ~ 'weekday',
+    TRUE ~ 'weekend')))
+
+head(new_activity)
+```
+
+```
+## # A tibble: 6 x 4
+##   steps date       interval day_type
+##   <dbl> <date>        <dbl> <fct>   
+## 1     0 2012-10-01        0 weekday 
+## 2     0 2012-10-01        5 weekday 
+## 3     0 2012-10-01       10 weekday 
+## 4     0 2012-10-01       15 weekday 
+## 5     0 2012-10-01       20 weekday 
+## 6     0 2012-10-01       25 weekday
+```
+
+**2. Make a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).**
+
+
+```r
+new_activity %>% group_by(day_type, interval) %>% 
+  summarize(average_steps = mean(steps)) %>% 
+  ungroup %>% 
+  ggplot(aes(x = interval, y = average_steps)) + 
+  geom_line() + 
+  labs(x = 'Interval', 
+       y = 'Average Number of Steps', 
+       title = 'Average Number of Steps by Interval and Type of Day') +
+  facet_grid(day_type ~ .) 
+```
+
+![](PA1_template_files/figure-html/weekday_weekend_timeseries-1.png)<!-- -->
